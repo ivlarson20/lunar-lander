@@ -1,10 +1,13 @@
 enum AnimationDirection { LEFT, RIGHT, UP, DOWN };
+#define LOG(argument) std::cout << argument << '\n'
+
 
 class Entity
 {
 private:
     // Removed individual animation arrays
     int m_walking[4][4]; // 4x4 array for walking animations
+
 
     // ————— TRANSFORMATIONS ————— //
     glm::vec3 m_movement;
@@ -15,21 +18,36 @@ private:
     
     float     m_speed;
 
+    
+
+
+
+    
+    // ------- MY ADDITIONS ------- //
+    float m_fuel_level = 200.0f;
+    glm::vec3 m_velocity = glm::vec3(0.0f);
+    glm::vec3 m_accel = glm::vec3(0.0f);
+    
+public:
     // ————— TEXTURES ————— //
     GLuint    m_texture_id;
-
+    // ————— STATIC VARIABLES ————— //
+    static constexpr int SECONDS_PER_FRAME = 4;
+    static constexpr float GRAV = -0.2;
+    
+    static const int LEFT = 0, RIGHT = 1, UP = 2, DOWN = 3;
+    
     // ————— ANIMATION ————— //
-    int m_animation_cols;
-    int m_animation_frames,
-        m_animation_index,
-        m_animation_rows;
+    int m_animation_cols = 0;
+    int m_animation_frames = 0,
+        m_animation_index = 0,
+        m_animation_rows = 0;
+    
+
     
     int  *m_animation_indices = nullptr;
     float m_animation_time    = 0.0f;
     
-public:
-    // ————— STATIC VARIABLES ————— //
-    static constexpr int SECONDS_PER_FRAME = 4;
 
     // ————— METHODS ————— //
     Entity();
@@ -51,10 +69,10 @@ public:
     void face_up()    { m_animation_indices = m_walking[UP];    }
     void face_down()  { m_animation_indices = m_walking[DOWN];  }
 
-    void move_left()  { m_movement.x = -1.0f; face_left(); };
-    void move_right() { m_movement.x = 1.0f;  face_right(); };
-    void move_up()    { m_movement.y = 1.0f;  face_up(); };
-    void move_down()  { m_movement.y = -1.0f; face_down(); };
+    void move_left()  { m_movement.x = -1.0f;  };
+    void move_right() { m_movement.x = 1.0f;   };
+    void move_up()    { m_movement.y = 1.0f;   };
+    void move_down()  { m_movement.y = -1.0f;  };
 
     // ————— GETTERS ————— //
     glm::vec3 const get_position()   const { return m_position;   }
@@ -62,6 +80,8 @@ public:
     glm::vec3 const get_scale()      const { return m_scale;      }
     GLuint    const get_texture_id() const { return m_texture_id; }
     float     const get_speed()      const { return m_speed;      }
+    float     const get_fuel()       const { return m_fuel_level; }
+    
 
     // ————— SETTERS ————— //
     void const set_position(glm::vec3 new_position)  { m_position   = new_position;     }
@@ -75,6 +95,15 @@ public:
     void const set_animation_frames(int new_frames) { m_animation_frames = new_frames; }
     void const set_animation_index(int new_index)   { m_animation_index = new_index;   }
     void const set_animation_time(int new_time)     { m_animation_time = new_time;     }
+    void const burn_fuel(float amount){
+        if (m_fuel_level > 0.0f){
+            m_fuel_level -= amount;
+            if (m_fuel_level < 0.0f) m_fuel_level = 0.0f;
+            LOG(m_fuel_level);
+        }
+    }
+    void const set_velocity(glm::vec3 new_velocity) {m_velocity = new_velocity;        }
+    void const set_accel(glm::vec3 new_accel)       {m_accel = new_accel;              }
 
     // Setter for m_walking
     void set_walking(int walking[4][4])

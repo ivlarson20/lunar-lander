@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		84D052832CAEF45D003975FF /* beaker.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 84D052812CAEF44A003975FF /* beaker.png */; };
-		84D052842CAEF465003975FF /* drops.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 84D052822CAEF44A003975FF /* drops.png */; };
+		C2FAD3DE2D835AED000DD09D /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2FAD3DD2D835AED000DD09D /* Entity.cpp */; };
 		DBDF1B532323DE3F007CECB1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBDF1B522323DE3F007CECB1 /* main.cpp */; };
 		DBDF1B5E2323DE8D007CECB1 /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBDF1B5D2323DE8D007CECB1 /* ShaderProgram.cpp */; };
 		DBDF1B612323DE9E007CECB1 /* shaders in CopyFiles */ = {isa = PBXBuildFile; fileRef = DBDF1B5C2323DE8D007CECB1 /* shaders */; };
@@ -26,8 +25,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				84D052832CAEF45D003975FF /* beaker.png in CopyFiles */,
-				84D052842CAEF465003975FF /* drops.png in CopyFiles */,
 				DBDF1B612323DE9E007CECB1 /* shaders in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -35,8 +32,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		84D052812CAEF44A003975FF /* beaker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beaker.png; sourceTree = "<group>"; };
-		84D052822CAEF44A003975FF /* drops.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drops.png; sourceTree = "<group>"; };
+		C20302662D84FE1000B5B7AC /* pigon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pigon.png; sourceTree = "<group>"; };
+		C203026A2D85D12000B5B7AC /* background 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background 3.png"; sourceTree = "<group>"; };
+		C20A8EFE2D8763D0006BA03F /* font1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font1.png; sourceTree = "<group>"; };
+		C23B6C172D87708700B31B4B /* pigon_fly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pigon_fly.png; sourceTree = "<group>"; };
+		C23B6C182D8A466B00B31B4B /* buildings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buildings.png; sourceTree = "<group>"; };
+		C2FAD3DC2D835AE1000DD09D /* Entity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
+		C2FAD3DD2D835AED000DD09D /* Entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		DBDF1B4F2323DE3F007CECB1 /* SDLProject */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDLProject; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBDF1B522323DE3F007CECB1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		DBDF1B592323DE8D007CECB1 /* ShaderProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderProgram.h; sourceTree = "<group>"; };
@@ -87,10 +89,15 @@
 		DBDF1B512323DE3F007CECB1 /* SDLProject */ = {
 			isa = PBXGroup;
 			children = (
-				84D052812CAEF44A003975FF /* beaker.png */,
-				84D052822CAEF44A003975FF /* drops.png */,
+				C20302662D84FE1000B5B7AC /* pigon.png */,
+				C23B6C172D87708700B31B4B /* pigon_fly.png */,
+				C203026A2D85D12000B5B7AC /* background 3.png */,
+				C23B6C182D8A466B00B31B4B /* buildings.png */,
+				C20A8EFE2D8763D0006BA03F /* font1.png */,
 				DBDF1B5B2323DE8D007CECB1 /* glm */,
 				DBDF1B5D2323DE8D007CECB1 /* ShaderProgram.cpp */,
+				C2FAD3DD2D835AED000DD09D /* Entity.cpp */,
+				C2FAD3DC2D835AE1000DD09D /* Entity.h */,
 				DBDF1B592323DE8D007CECB1 /* ShaderProgram.h */,
 				DBDF1B5C2323DE8D007CECB1 /* shaders */,
 				DBDF1B5A2323DE8D007CECB1 /* stb_image.h */,
@@ -168,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBDF1B532323DE3F007CECB1 /* main.cpp in Sources */,
+				C2FAD3DE2D835AED000DD09D /* Entity.cpp in Sources */,
 				DBDF1B5E2323DE8D007CECB1 /* ShaderProgram.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

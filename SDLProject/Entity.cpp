@@ -1,3 +1,13 @@
+/**
+* Author: Isabelle Larson
+* Assignment: Lunar Lander
+* Date due: 2025-3-15, 11:59pm
+* I pledge that I have completed this assignment without
+* collaborating with anyone else, in conformance with the
+* NYU School of Engineering Policies and Procedures on
+* Academic Misconduct.
+**/
+
 #define GL_SILENCE_DEPRECATION
 #define STB_IMAGE_IMPLEMENTATION
 
@@ -47,7 +57,7 @@ Entity::Entity(GLuint texture_id, float speed)
 {
     // Initialize m_walking with zeros or any default value
     for (int i = 0; i < SECONDS_PER_FRAME; ++i)
-        for (int j = 0; j < SECONDS_PER_FRAME; ++j) m_walking[i][j] = 0;
+            for (int j = 0; j < SECONDS_PER_FRAME; ++j) m_walking[i][j] = 0;
 }
 
 Entity::~Entity() { }
@@ -111,8 +121,29 @@ void Entity::update(float delta_time)
             }
         }
     }
+    // ---- adding in gravity ---- //
+//    
+//    m_accel.y += GRAV * delta_time;
+//    m_velocity += m_accel * delta_time;
+//    m_position += m_velocity * delta_time;
+//    m_accel = glm::vec3(0.0f);
     
-    m_position += m_movement * m_speed * delta_time;
+
+    
+    // Add movement to velocity
+    m_velocity.x = m_movement.x * m_speed;
+    m_velocity.y = m_movement.y * m_speed;
+
+    // Apply gravity
+    m_accel.y += GRAV;
+    
+    // Update position based on velocity
+    m_position += m_velocity * delta_time;
+    
+    
+    // Reset acceleration after applying
+    m_accel = glm::vec3(0.0f, GRAV, 0.0f);
+    
     m_model_matrix = glm::mat4(1.0f);
     m_model_matrix = glm::translate(m_model_matrix, m_position);
     m_model_matrix = glm::scale(m_model_matrix, m_scale);

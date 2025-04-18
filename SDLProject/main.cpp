@@ -136,12 +136,12 @@ float building3_bottom = building3_pos.y - building_scale.y / 2;
 
 
 // pigon
-glm::vec3 pigon_pos = g_game_state.pigon->get_position();
-glm::vec3 pigon_scale = g_game_state.pigon->get_scale();
-float pigon_left = pigon_pos.x - pigon_scale.x / 2;
-float pigon_right = pigon_pos.x + pigon_scale.x / 2;
-float pigon_top = pigon_pos.y + pigon_scale.y / 2;
-float pigon_bottom = pigon_pos.y - pigon_scale.y / 2;
+glm::vec3 pigon_pos;
+glm::vec3 pigon_scale;
+float pigon_left;
+float pigon_right;
+float pigon_top;
+float pigon_bottom;
 
 
 GLuint load_texture(const char* filepath)
@@ -283,6 +283,15 @@ void initialise()
     g_game_state.pigon->set_speed(1.0f);
     g_game_state.pigon->set_accel(glm::vec3(0.0f, GRAVITY, 0.0f));
     g_game_state.pigon->update(0.0f);
+    
+    glm::vec3 pigon_pos = g_game_state.pigon->get_position();
+    glm::vec3 pigon_scale = g_game_state.pigon->get_scale();
+    float pigon_left = pigon_pos.x - pigon_scale.x / 2;
+    float pigon_right = pigon_pos.x + pigon_scale.x / 2;
+    float pigon_top = pigon_pos.y + pigon_scale.y / 2;
+    float pigon_bottom = pigon_pos.y - pigon_scale.y / 2;
+    
+    
     
     
     //-------BUILDINGS-------//
